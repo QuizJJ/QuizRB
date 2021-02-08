@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1080489530731",
+    "project_id": "quizr-3dded",
+    "storage_bucket": "quizr-3dded.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080489530731:android:89c82810f6f5fcd891a82e",
+        "android_client_info": {
+          "package_name": "com.example.quizr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080489530731-jl7udojgtp0gg9r1tp6jo0ot8fnmols0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvGzKmJZtM4yA6W_cbTBAV5u4a3pQciy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080489530731-jl7udojgtp0gg9r1tp6jo0ot8fnmols0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
