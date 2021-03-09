@@ -95,7 +95,6 @@ public class QuizActivity extends AppCompatActivity {
                     ConferindoOResultado(idQuestaoCerta,textOp1.getId());
 
                 if (contador==6){
-                    resgataOUser();
                     adicionaJogos(jogosAnteriores);
                     Intent intent = new Intent(getApplicationContext(),OpcoesActivity.class);
                     startActivity(intent);
@@ -112,7 +111,6 @@ public class QuizActivity extends AppCompatActivity {
                 ConferindoOResultado(idQuestaoCerta,textOp2.getId());
 
                 if (contador==6){
-                    resgataOUser();
                     adicionaJogos(jogosAnteriores);
                     Intent intent = new Intent(getApplicationContext(),OpcoesActivity.class);
                     startActivity(intent);
@@ -130,7 +128,6 @@ public class QuizActivity extends AppCompatActivity {
                 ConferindoOResultado(idQuestaoCerta,textOp3.getId());
 
                 if (contador==6){
-                    resgataOUser();
                     adicionaJogos(jogosAnteriores);
                     Intent intent = new Intent(getApplicationContext(),OpcoesActivity.class);
                     startActivity(intent);
@@ -147,7 +144,6 @@ public class QuizActivity extends AppCompatActivity {
                 ConferindoOResultado(idQuestaoCerta,textOp4.getId());
 
                 if (contador==6){
-                    resgataOUser();
                     adicionaJogos(jogosAnteriores);
                     Intent intent = new Intent(getApplicationContext(),OpcoesActivity.class);
                     startActivity(intent);
@@ -183,8 +179,6 @@ public class QuizActivity extends AppCompatActivity {
             Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
             DisplaySucess();
             QuizItensFunction();
-
-            adicionaPontos(pontosAnteriores);
 
             FirebaseAuth user = FirebaseAuth.getInstance();
             FirebaseFirestore fb = FirebaseFirestore.getInstance();
