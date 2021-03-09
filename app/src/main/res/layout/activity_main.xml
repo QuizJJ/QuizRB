@@ -27,7 +27,6 @@
             android:layout_centerHorizontal="true"
             />
 
-
         <EditText
             android:id="@+id/get_email"
             android:layout_width="match_parent"
@@ -61,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:textColorHint="@color/branco"
             android:backgroundTint="@color/branco"
             android:textColor="@color/branco"
@@ -101,6 +100,4 @@
             />
 
     </RelativeLayout>
-
-
 </ScrollView>

@@ -75,7 +75,9 @@
                 android:textColorHint="@color/cinza"
                 android:backgroundTint="@color/cinza"
                 android:layout_marginTop="5dp"
-                tools:ignore="RtlCompat" />
+                tools:ignore="RtlCompat"
+                android:inputType="textPassword"
+                />
 
             <Button
                 android:id="@+id/salvar_cadastro_oio"

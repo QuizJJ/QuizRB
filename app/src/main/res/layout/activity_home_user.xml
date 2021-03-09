@@ -15,95 +15,129 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/shappe_img_home"
         android:textColor="@color/black"
         app:backgroundTint="@color/branco"
         app:srcCompat="@drawable/common_google_signin_btn_icon_light" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_home_user"
-        android:layout_width="180dp"
-        android:layout_height="150dp"
-        android:layout_below="@id/img_user_home"
-        android:layout_marginTop="10dp"
+        android:id="@+id/card_name_home_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="15dp"
-        android:backgroundTint="@color/branco"
-        >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/text_pontos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total Pontos"
-                android:textColor="@color/black"
-                android:layout_centerHorizontal="true"
-                android:textSize="30sp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="25dp"
-                />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/text_pontos_set"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/text_pontos"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:text="90"
-                android:inputType="number"
-                android:textColor="@color/black"
-                android:textSize="30dp"
-                />
-
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_home_user_2"
-        android:layout_width="180dp"
-        android:layout_height="150dp"
-        android:layout_below="@id/img_user_home"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_alignBottom="@id/img_user_home"
         android:layout_marginEnd="15dp"
         android:backgroundTint="@color/branco"
         >
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/text_jogos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="N Jogos"
-                android:textColor="@color/black"
-                android:layout_centerHorizontal="true"
-                android:textSize="30sp"
+            <ImageView
+                android:id="@+id/icon_user_home"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_programmer"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="25dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
                 />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/text_jogos_set"
+            <TextView
+                android:id="@+id/nome_do_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/text_jogos"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:text="90"
-                android:inputType="number"
+                android:layout_toEndOf="@id/icon_user_home"
+                android:text="dasdasda"
                 android:textColor="@color/black"
-                android:textSize="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:textSize="20dp"
                 />
+
+            <TextView
+                android:id="@+id/qnt_pts_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/icon_pontos_home"
+                android:text="dasdasda"
+                android:textColor="@color/black"
+                android:layout_below="@id/nome_do_user"
+                android:layout_alignTop="@id/icon_pontos_home"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:textSize="20dp"
+                />
+
+            <TextView
+                android:id="@+id/qnt_jogos_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/icon_jogos_home"
+                android:text="dasdasda"
+                android:layout_alignTop="@id/icon_jogos_home"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/icon_pontos_home"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_score"
+                android:layout_below="@id/icon_user_home"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_alignParentStart="true"
+                />
+
+            <ImageView
+                android:id="@+id/icon_jogos_home"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_videogame"
+                android:layout_below="@id/icon_pontos_home"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="2dp"
+                />
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/play_button"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/card_name_home_user"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/white"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:text="JOGAR"
+        android:textColor="@color/cinza"
+        android:textStyle="bold"
+        android:textSize="35dp"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_id_config"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/play_button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="UP BANK"
+        />
+
 
 </RelativeLayout>

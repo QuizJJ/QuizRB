@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,12 +16,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
+    //instanciando os botoes e variaveis utlizadas na tela Main
     private Button entrar;
     private TextView cadsatrarse;
     private Button jogarSemLogin;
@@ -28,75 +33,63 @@ public class MainActivity extends AppCompatActivity {
     private EditText senhaGet;
 
 
+    //variaveis utilizadas como parametros do login
+    private String email;
+    private String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //instanciando os componentes do banco pelo ID
         cadsatrarse= findViewById(R.id.text_cadastrase);
         entrar = findViewById(R.id.button_entrar);
         emailLog = findViewById(R.id.get_email);
         senhaGet = findViewById(R.id.get_senha);
 
+        //pegando a instancia do fireStore
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        //pegando a instacia do fireStore autenticação
+        FirebaseAuth Auth = FirebaseAuth.getInstance();
 
-//        cadastrar = findViewById(R.id.button_cadastrar);
-//        jogarSemLogin = findViewById(R.id.button_entrar_sem_login);
 
-//        entrar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(getApplicationContext(),ActivityHomeQuiz.class);
-//                startActivity(intent);
-//
-//            }
-//        });
-//
+
+        //funcao de click do botao entrar
         entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(emailLog.getText().toString().isEmpty()){
+                //pega email e senha e converte para string
+                email = emailLog.getText().toString();
+                password = senhaGet.getText().toString();
 
-                    Toast.makeText(MainActivity.this, "Email Obrigatorio", Toast.LENGTH_SHORT).show();
-
-                }else if (senhaGet.getText().toString().isEmpty()){
-                    Toast.makeText(MainActivity.this, "Senha Obrigatorio", Toast.LENGTH_SHORT).show();
+                //verifica se tem senha e email nos campos.
+                if(email.isEmpty()){
+                    emailLog.setError("Email Obrigatorio");
+                    emailLog.requestFocus();
+                }else if(password.isEmpty()){
+                    senhaGet.setError("Senha Obrigatoria");
+                    senhaGet.requestFocus();
                 }else {
 
-                    firestore.collection("Usuarios").document(emailLog.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    //meoto de login do usuario já cadastrado.
+                    Auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful()){
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
 
-                                DocumentSnapshot documentSnapshot = task.getResult();
+                                Toast.makeText(MainActivity.this, "Sucesso Logar", Toast.LENGTH_SHORT).show();
 
-                                ModelUser user =  documentSnapshot.toObject(ModelUser.class);
-
-                                if(emailLog.getText().toString().equals(user.getEmail()) ){
-
-                                    Toast.makeText(MainActivity.this, "Email Correto", Toast.LENGTH_SHORT).show();
-                                }else {
-
-                                    Toast.makeText(MainActivity.this, "Email Errado", Toast.LENGTH_SHORT).show();
-
-                                }  if (senhaGet.getText().toString().equals(user.getSenha())){
-                                    Toast.makeText(MainActivity.this, "Senha correta", Toast.LENGTH_SHORT).show();
-                                } else {
-
-                                    Toast.makeText(MainActivity.this, "Senha Errada", Toast.LENGTH_SHORT).show();
-                                }
-
+                                // abre uma nova acitivity Home user.
+                                Intent inten = new Intent(getApplicationContext(), HomeUserActivity.class);
+                                startActivity(inten);
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-
-                            Toast.makeText(MainActivity.this, "Documento Não Encontrado", Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(MainActivity.this, "Email ou senha incorretos", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -104,8 +97,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
+        //funcao de abrir a tela de cadastro de usuario.
         cadsatrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,6 +107,5 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 }
